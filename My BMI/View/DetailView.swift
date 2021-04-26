@@ -28,74 +28,126 @@ struct DetailView: View {
                     
                     // Dismiss popover button
                     HStack {
+                        Spacer()
                         Button(action: {
                             presentationMode.wrappedValue.dismiss()
                         }) {
-                            Image(systemName: "chevron.backward.circle.fill")
+                            Image(systemName: "x.circle.fill")
                                 .font(.largeTitle)
                                 .foregroundColor(.white)
                                 .opacity(0.5)
                         }
-                        Spacer()
                     }
                     
                     Spacer()
                     
-                    // Title
+                    // MARK: Heading
                     VStack(alignment: .leading) {
                         Text("Your BMI Table")
                             .font(.largeTitle)
                             .fontWeight(.heavy)
                             .foregroundColor(.white)
                         
-                        // Height, Weight, BMI overview
+                        // MARK: Your Overview
                         HStack {
+                            
                             VStack(alignment: .leading) {
                                 Image(systemName: "arrow.up.and.down")
-                                    .font(.title2)
+                                    .font(.title3)
                                     .foregroundColor(.white)
                                     .padding(.vertical, 10)
+                                    .opacity(0.5)
                                     Text("HEIGHT")
                                         .font(.headline)
                                         .foregroundColor(.white)
                                     Text("\(getHeight(cm: bmi.height, isMetric: isHeightMetric))")
-                                        .font(.title2)
+                                        .font(.title3)
                                         .fontWeight(.bold)
                                         .foregroundColor(.white)
-                            }.onTapGesture { isHeightMetric.toggle() }
+                            }
+                            .onTapGesture { isHeightMetric.toggle() }
+                            
                             Spacer()
+                            
                             VStack(alignment: .leading) {
                                 Image(systemName: "scalemass")
-                                    .font(.title2)
+                                    .font(.title3)
                                     .foregroundColor(.white)
                                     .padding(.vertical, 10)
+                                    .opacity(0.5)
                                     Text("WEIGHT")
                                         .font(.headline)
                                         .foregroundColor(.white)
                                 Text("\(getWeight(kg: bmi.weight, isMetric: isWeightMetric, indicator: true))")
-                                        .font(.title2)
+                                        .font(.title3)
                                         .fontWeight(.bold)
                                         .foregroundColor(.white)
-                            }.onTapGesture { isWeightMetric.toggle() }
+                            }
+                            .onTapGesture { isWeightMetric.toggle() }
+                            
                             Spacer()
+                            
                             VStack(alignment: .leading) {
                                 Image(systemName: "figure.stand")
-                                    .font(.title2)
+                                    .font(.title3)
                                     .foregroundColor(.white)
                                     .padding(.vertical, 10)
+                                    .opacity(0.5)
                                     Text("BMI")
                                         .font(.headline)
                                         .foregroundColor(.white)
                                 Text("\(bmi.getBMIValue())")
-                                        .font(.title2)
+                                        .font(.title3)
                                         .fontWeight(.bold)
                                         .foregroundColor(Color(getColor()))
-                                        .onTapGesture {
-                                            isHeightMetric.toggle()
-                                        }
                             }
                         }.padding(.vertical)
                     }
+                    
+                    Spacer()
+                    
+                    Group {
+                        VStack(alignment: .leading) {
+                            Text("UNDERWEIGHT")
+                                .font(.headline)
+                                .foregroundColor(Color(UIColor.systemBlue))
+                            Text("Below \(getWeight(kg: bmi.reverseBMI(targetBMI: 18.5), isMetric: isWeightMetric, indicator: true))")
+                                .font(.title3)
+                                .foregroundColor(Color(UIColor.systemBlue))
+                        }.padding(.vertical, 5)
+                        VStack(alignment: .leading) {
+                            Text("HEALTHY")
+                                .font(.headline)
+                                .foregroundColor(Color(UIColor.systemGreen))
+                            Text("Between \(getWeight(kg: bmi.reverseBMI(targetBMI: 18.5), isMetric: isWeightMetric, indicator: false)) and \(getWeight(kg: bmi.reverseBMI(targetBMI: 25), isMetric: isWeightMetric, indicator: true))")
+                                .font(.title3)
+                                .foregroundColor(Color(UIColor.systemGreen))
+                        }.padding(.vertical, 5)
+                        VStack(alignment: .leading) {
+                            Text("OVERWEIGHT")
+                                .font(.headline)
+                                .foregroundColor(Color(UIColor.systemOrange))
+                            Text("Between \(getWeight(kg: bmi.reverseBMI(targetBMI: 25), isMetric: isWeightMetric, indicator: false)) and \(getWeight(kg: bmi.reverseBMI(targetBMI: 30), isMetric: isWeightMetric, indicator: true))")
+                                .font(.title3)
+                                .foregroundColor(Color(UIColor.systemOrange))
+                        }.padding(.vertical, 5)
+                        VStack(alignment: .leading) {
+                            Text("OBESE")
+                                .font(.headline)
+                                .foregroundColor(Color(UIColor.systemRed))
+                            Text("Between \(getWeight(kg: bmi.reverseBMI(targetBMI: 30), isMetric: isWeightMetric, indicator: false)) and \(getWeight(kg: bmi.reverseBMI(targetBMI: 40), isMetric: isWeightMetric, indicator: true))")
+                                .font(.title3)
+                                .foregroundColor(Color(UIColor.systemRed))
+                        }.padding(.vertical, 5)
+                        VStack(alignment: .leading) {
+                            Text("EXTREMELY OBESE")
+                                .font(.headline)
+                                .foregroundColor(.gray)
+                            Text("Over \(getWeight(kg: bmi.reverseBMI(targetBMI: 40), isMetric: isWeightMetric, indicator: true))")
+                                .font(.title3)
+                                .foregroundColor(.gray)
+                        }.padding(.vertical, 5)
+                    }.onTapGesture { isWeightMetric.toggle() }
                     
                     Spacer()
                     

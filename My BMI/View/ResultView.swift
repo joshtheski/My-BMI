@@ -70,7 +70,7 @@ struct ResultView: View {
                             .foregroundColor(.orange)
                         Rectangle().frame(width: (25/50)*customWidth, height: 20)
                             .foregroundColor(.green)
-                        Rectangle().frame(width: (19/50)*customWidth, height: 20)
+                        Rectangle().frame(width: (18.5/50)*customWidth, height: 20)
                             .foregroundColor(.blue)
                     }
                     .cornerRadius(45.0)
@@ -104,7 +104,7 @@ struct ResultView: View {
                         
                         // MARK: Goal
                         if bmi.getClassification() != .healthy {
-                            let targetWeight = bmi.determineTargetWeight()
+                            let goal = bmi.determineWeightLossGoal()
                             HStack {
                                 Image(systemName: "arrow.forward")
                                     .font(.title)
@@ -112,11 +112,9 @@ struct ResultView: View {
                                     .opacity(0.5)
                                     .frame(width: 50)
                                 Group {
-                                    Text("\(targetWeight.type) ") +
-                                        Text("\(getWeight(kg: targetWeight.healthyMinimum, isMetric: isWeightMetric, indicator: false))").bold() +
-                                        Text(" to ") +
-                                        Text("\(getWeight(kg: targetWeight.healthyMaximum, isMetric: isWeightMetric, indicator: true))").bold() +
-                                        Text(".")
+                                    Text("\(goal.type) at least ") +
+                                    Text("\(getWeight(kg: goal.healthyMinimum, isMetric: isWeightMetric, indicator: true))").bold() +
+                                    Text(".")
                                 }.font(.title2)
                                 .foregroundColor(.white)
                                 .multilineTextAlignment(.leading)
@@ -124,27 +122,30 @@ struct ResultView: View {
                         }
                     }
                     
+                    Button(action: {
+                        self.showModal = true
+                    }) {
+                        HStack {
+                            Image(systemName: "tablecells.badge.ellipsis")
+                                .font(.title3)
+                            Text("My BMI Table")
+                                .font(.title3)
+                                .fontWeight(.medium)
+                        }
+                        .foregroundColor(.white)
+                        .padding()
+                    }.sheet(isPresented: $showModal) {
+                        DetailView(bmi: bmi)
+                    }
+                    .background(
+                        Capsule()
+                            .fill(Color.white.opacity(0.25))
+                    )
+                    .padding()
+                    
                     Spacer()
                     
                     Group {
-                        
-                        // MARK: My BMI Table Button
-                        Button(action: {
-                            self.showModal = true
-                        }) {
-                            ZStack {
-                                Color(.white).opacity(0.25)
-                                Text("View My BMI Table")
-                                    .font(.title)
-                                    .fontWeight(.semibold)
-                                    .foregroundColor(.white)
-                                    .padding()
-                            }
-                            .frame(maxWidth: 500, maxHeight: 70)
-                            .cornerRadius(15.0)
-                        }.sheet(isPresented: $showModal) {
-                            DetailView(bmi: bmi)
-                        }
                         
                         // MARK: Recalculate Button
                         Button(action: {

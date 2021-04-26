@@ -19,7 +19,7 @@ struct BMICalculator {
         let heightInMetres = height / 100
         let bmiValue = weight / (heightInMetres * heightInMetres)
         
-        if bmiValue < 19 {
+        if bmiValue < 18.5 {
             bmi = BMI(
                 classification: .underweight,
                 value: bmiValue,
@@ -90,18 +90,18 @@ struct BMICalculator {
     }
     
     // Determine a weight loss/gain goal based on BMI
-    func determineTargetWeight() -> (healthyMinimum: Float, healthyMaximum: Float, type: String) {
+    func determineWeightLossGoal() -> (healthyMinimum: Float, healthyMaximum: Float, type: String) {
         var min: Float = 0.0
         var max: Float = 0.0
         var type = ""
         switch bmi?.classification {
         case .underweight:
-            min = reverseBMI(targetBMI: 19) - weight
+            min = reverseBMI(targetBMI: 18.5) - weight
             max = reverseBMI(targetBMI: 24.9) - weight
             type = "Gain"
         default:
             min = weight - reverseBMI(targetBMI: 24.9)
-            max = weight - reverseBMI(targetBMI: 19)
+            max = weight - reverseBMI(targetBMI: 18.5)
             type = "Lose"
         }
         return (min, max, type)
