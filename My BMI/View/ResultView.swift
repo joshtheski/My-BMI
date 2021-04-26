@@ -50,17 +50,14 @@ struct ResultView: View {
                     Text("\(bmi.getBMIValue())")
                         .font(Font.system(size: 80, design: .rounded).weight(.heavy))
                         .foregroundColor(.white)
-                    //                    Text("kg / m²")
-                    //                        .font(.title)
-                    //                        .fontWeight(.regular)
-                    //                        .foregroundColor(.white)
                     
                     Spacer()
                     
                     
-                    // MARK: Indicator & Arrow
+                    // MARK: Visual Representation
                     let customWidth = geo.size.width / 1.5
                     
+                    // Progress bar with colors
                     ZStack(alignment: .leading) {
                         Rectangle().frame(width: customWidth, height: 20)
                             .foregroundColor(Color(.black).opacity(0.5))
@@ -79,6 +76,7 @@ struct ResultView: View {
                             .stroke(Color.white, lineWidth: 4)
                     )
                     
+                    // Arrow idicator
                     if bmi.getBMIValue() < 50 {
                         Image(systemName: "arrowtriangle.up.fill")
                             .font(.title2)
@@ -87,9 +85,10 @@ struct ResultView: View {
                             .frame(width: customWidth, alignment: .leading)
                     }
                     
+                    // MARK: Description
                     VStack(alignment: .leading) {
                         
-                        // MARK: Description
+                        // Advice
                         HStack {
                             Image(systemName: bmi.getSymbol())
                                 .font(.title)
@@ -102,7 +101,7 @@ struct ResultView: View {
                                 .foregroundColor(.white)
                         }.padding(.vertical)
                         
-                        // MARK: Goal
+                        // Weight goal
                         if bmi.getClassification() != .healthy {
                             let goal = bmi.determineWeightLossGoal()
                             HStack {
@@ -122,6 +121,7 @@ struct ResultView: View {
                         }
                     }
                     
+                    // MARK: View BMI Table
                     Button(action: {
                         self.showModal = true
                     }) {
@@ -134,8 +134,9 @@ struct ResultView: View {
                         }
                         .foregroundColor(.white)
                         .padding()
-                    }.sheet(isPresented: $showModal) {
-                        DetailView(bmi: bmi)
+                    }
+                    .sheet(isPresented: $showModal) {
+                        DetailView(bmi: bmi, isHeightMetric: isHeightMetric, isWeightMetric: isWeightMetric)
                     }
                     .background(
                         Capsule()
@@ -145,24 +146,23 @@ struct ResultView: View {
                     
                     Spacer()
                     
-                    Group {
                         
-                        // MARK: Recalculate Button
-                        Button(action: {
-                            presentationMode.wrappedValue.dismiss()
-                        }) {
-                            ZStack {
-                                Color(.white).opacity(0.25)
-                                Text("Recalculate")
-                                    .font(.title)
-                                    .fontWeight(.semibold)
-                                    .foregroundColor(.white)
-                                    .padding()
-                            }
-                            .frame(maxWidth: 500, maxHeight: 70)
-                            .cornerRadius(15.0)
+                    // MARK: Recalculate Button
+                    Button(action: {
+                        presentationMode.wrappedValue.dismiss()
+                    }) {
+                        ZStack {
+                            Color(.white).opacity(0.25)
+                            Text("Recalculate")
+                                .font(.title)
+                                .fontWeight(.semibold)
+                                .foregroundColor(.white)
+                                .padding()
                         }
+                        .frame(maxWidth: 500, maxHeight: 70)
+                        .cornerRadius(15.0)
                     }.padding(.bottom)
+                    
                 }.padding()
             }
         }

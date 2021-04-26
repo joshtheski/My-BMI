@@ -19,20 +19,21 @@ struct BMIView: View {
         
         ZStack {
             
-            // Background
+            // MARK: Background
             Color(.black)
                 .edgesIgnoringSafeArea(.all)
             AnimatedBackground()
                 .edgesIgnoringSafeArea(.all)
                 .blur(radius: 25)
                 .scaleEffect(1.2)
-                .opacity(0.9)
+                .opacity(0.9) // slightly dim to improve contrast with text
             
             VStack {
                 
                 Spacer()
                 
                 // MARK: Top Heading
+                // When app opens up...
                 if !isChanged {
                 Text("Calculate Your BMI")
                     .font(.largeTitle)
@@ -46,7 +47,10 @@ struct BMIView: View {
                     .multilineTextAlignment(.center)
                     .opacity(0.8)
                     .padding()
-                } else if isChanged {
+                }
+                // As soon as you move a slider...
+                else if isChanged {
+                    // Dynamic person icon
                     Image(systemName: "figure.stand")
                         .font(.system(size: determineHeight(), weight: determineWeight()))
                         .frame(width: 200, height: 200, alignment: .bottom)
@@ -68,9 +72,7 @@ struct BMIView: View {
                         Text("\(getHeight(cm: bmi.height, isMetric: isHeightMetric))")
                             .font(Font.system(.largeTitle, design: .rounded).weight(.heavy))
                             .foregroundColor(.white)
-                            .onTapGesture {
-                                isHeightMetric.toggle()
-                            }
+                            .onTapGesture { isHeightMetric.toggle() } // tap to change
                     }.padding(.horizontal)
                     
                     Slider(value: $bmi.height, in: 120...220, onEditingChanged: { _ in
@@ -78,9 +80,7 @@ struct BMIView: View {
                     })
                         .accentColor(Color("purpleHighlight"))
                         .padding()
-                        .onTapGesture {
-                            isChanged = true
-                        }
+                        .onTapGesture { isChanged = true }
                         .onAppear {
                             if(self.bmi.height < 1) {
                                 self.bmi.height = 170
@@ -101,9 +101,7 @@ struct BMIView: View {
                         Text("\(getWeight(kg: bmi.weight, isMetric: isWeightMetric, indicator: true))")
                             .font(Font.system(.largeTitle, design: .rounded).weight(.heavy))
                             .foregroundColor(.white)
-                            .onTapGesture {
-                                isWeightMetric.toggle()
-                            }
+                            .onTapGesture { isWeightMetric.toggle() } // tap to change
                     }.padding(.horizontal)
                     
                     Slider(value: $bmi.weight, in: 20...150, onEditingChanged: { _ in

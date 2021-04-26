@@ -43,6 +43,7 @@ struct DetailView: View {
                     
                     // MARK: Heading
                     VStack(alignment: .leading) {
+                        
                         Text("Your BMI Table")
                             .font(.largeTitle)
                             .fontWeight(.heavy)
@@ -51,6 +52,7 @@ struct DetailView: View {
                         // MARK: Your Overview
                         HStack {
                             
+                            // Your height
                             VStack(alignment: .leading) {
                                 Image(systemName: "arrow.up.and.down")
                                     .font(.title3)
@@ -69,6 +71,7 @@ struct DetailView: View {
                             
                             Spacer()
                             
+                            // Your weight
                             VStack(alignment: .leading) {
                                 Image(systemName: "scalemass")
                                     .font(.title3)
@@ -87,6 +90,7 @@ struct DetailView: View {
                             
                             Spacer()
                             
+                            // Your BMI value
                             VStack(alignment: .leading) {
                                 Image(systemName: "figure.stand")
                                     .font(.title3)
@@ -106,7 +110,10 @@ struct DetailView: View {
                     
                     Spacer()
                     
+                    // MARK: Table
                     Group {
+                        
+                        // Underweight
                         VStack(alignment: .leading) {
                             Text("UNDERWEIGHT")
                                 .font(.headline)
@@ -115,6 +122,8 @@ struct DetailView: View {
                                 .font(.title3)
                                 .foregroundColor(Color(UIColor.systemBlue))
                         }.padding(.vertical, 5)
+                        
+                        // Healthy
                         VStack(alignment: .leading) {
                             Text("HEALTHY")
                                 .font(.headline)
@@ -123,6 +132,8 @@ struct DetailView: View {
                                 .font(.title3)
                                 .foregroundColor(Color(UIColor.systemGreen))
                         }.padding(.vertical, 5)
+                        
+                        // Overweight
                         VStack(alignment: .leading) {
                             Text("OVERWEIGHT")
                                 .font(.headline)
@@ -131,6 +142,8 @@ struct DetailView: View {
                                 .font(.title3)
                                 .foregroundColor(Color(UIColor.systemOrange))
                         }.padding(.vertical, 5)
+                        
+                        // Obese
                         VStack(alignment: .leading) {
                             Text("OBESE")
                                 .font(.headline)
@@ -139,6 +152,8 @@ struct DetailView: View {
                                 .font(.title3)
                                 .foregroundColor(Color(UIColor.systemRed))
                         }.padding(.vertical, 5)
+                        
+                        // Extremely Obese
                         VStack(alignment: .leading) {
                             Text("EXTREMELY OBESE")
                                 .font(.headline)
@@ -156,6 +171,7 @@ struct DetailView: View {
         }
     }
     
+    // Prevent black-on-black text based on BMI classification
     func getColor() -> UIColor {
         var color = bmi.getColor()
         if color == .black { color = .white }
