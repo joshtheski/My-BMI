@@ -7,19 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4208BAF1260CFA1F00EBFBCF /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4208BAF0260CFA1F00EBFBCF /* ResultView.swift */; };
 		4210A6F0260AEB1600B8CFF7 /* My_BMIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4210A6EF260AEB1600B8CFF7 /* My_BMIApp.swift */; };
-		4210A6F2260AEB1600B8CFF7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4210A6F1260AEB1600B8CFF7 /* ContentView.swift */; };
+		4210A6F2260AEB1600B8CFF7 /* BMIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4210A6F1260AEB1600B8CFF7 /* BMIView.swift */; };
 		4210A6F4260AEB1700B8CFF7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4210A6F3260AEB1700B8CFF7 /* Assets.xcassets */; };
 		4210A6F7260AEB1700B8CFF7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4210A6F6260AEB1700B8CFF7 /* Preview Assets.xcassets */; };
+		4210A704260AEB9700B8CFF7 /* BMI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4210A702260AEB9700B8CFF7 /* BMI.swift */; };
+		4210A705260AEB9700B8CFF7 /* BMICalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4210A703260AEB9700B8CFF7 /* BMICalculator.swift */; };
+		426A5C1C2633540C00F79D14 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426A5C1B2633540C00F79D14 /* DetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4208BAF0260CFA1F00EBFBCF /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		4210A6EC260AEB1600B8CFF7 /* My BMI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My BMI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4210A6EF260AEB1600B8CFF7 /* My_BMIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = My_BMIApp.swift; sourceTree = "<group>"; };
-		4210A6F1260AEB1600B8CFF7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		4210A6F1260AEB1600B8CFF7 /* BMIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMIView.swift; sourceTree = "<group>"; };
 		4210A6F3260AEB1700B8CFF7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4210A6F6260AEB1700B8CFF7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4210A6F8260AEB1700B8CFF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4210A702260AEB9700B8CFF7 /* BMI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BMI.swift; sourceTree = "<group>"; };
+		4210A703260AEB9700B8CFF7 /* BMICalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BMICalculator.swift; sourceTree = "<group>"; };
+		426A5C1B2633540C00F79D14 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,7 +61,8 @@
 			isa = PBXGroup;
 			children = (
 				4210A6EF260AEB1600B8CFF7 /* My_BMIApp.swift */,
-				4210A6F1260AEB1600B8CFF7 /* ContentView.swift */,
+				4210A700260AEB7600B8CFF7 /* Model */,
+				4210A701260AEB7E00B8CFF7 /* View */,
 				4210A6F3260AEB1700B8CFF7 /* Assets.xcassets */,
 				4210A6F8260AEB1700B8CFF7 /* Info.plist */,
 				4210A6F5260AEB1700B8CFF7 /* Preview Content */,
@@ -67,6 +76,25 @@
 				4210A6F6260AEB1700B8CFF7 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		4210A700260AEB7600B8CFF7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4210A702260AEB9700B8CFF7 /* BMI.swift */,
+				4210A703260AEB9700B8CFF7 /* BMICalculator.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4210A701260AEB7E00B8CFF7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4210A6F1260AEB1600B8CFF7 /* BMIView.swift */,
+				4208BAF0260CFA1F00EBFBCF /* ResultView.swift */,
+				426A5C1B2633540C00F79D14 /* DetailView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,7 +166,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4210A6F2260AEB1600B8CFF7 /* ContentView.swift in Sources */,
+				4210A6F2260AEB1600B8CFF7 /* BMIView.swift in Sources */,
+				426A5C1C2633540C00F79D14 /* DetailView.swift in Sources */,
+				4210A704260AEB9700B8CFF7 /* BMI.swift in Sources */,
+				4208BAF1260CFA1F00EBFBCF /* ResultView.swift in Sources */,
+				4210A705260AEB9700B8CFF7 /* BMICalculator.swift in Sources */,
 				4210A6F0260AEB1600B8CFF7 /* My_BMIApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -268,11 +300,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"My BMI/Preview Content\"";
 				DEVELOPMENT_TEAM = B3YHQ46LJ3;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "My BMI/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -290,11 +323,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"My BMI/Preview Content\"";
 				DEVELOPMENT_TEAM = B3YHQ46LJ3;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "My BMI/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
