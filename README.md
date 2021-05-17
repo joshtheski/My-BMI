@@ -28,6 +28,6 @@ My BMI is available on the App Store for iPhone and iPad. You can also run it on
   
 ## Acknowledgements
 
- - [London App Brewery iOS Development Bootcamp on Udemy – Section 10](https://www.udemy.com/course/ios-13-app-development-bootcamp/learn/lecture/16253100#overview)
+ - [London App Brewery iOS Development Bootcamp on Udemy – Section 11: Advanced Swift Programming](https://www.udemy.com/course/ios-13-app-development-bootcamp/learn/lecture/16253100#overview)
  - [Animated Gradients in SwiftUI](https://nerdyak.tech/development/2019/09/30/animating-gradients-swiftui.html)
   
